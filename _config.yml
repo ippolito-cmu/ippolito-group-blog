@@ -1,6 +1,6 @@
-title: "Blog Title"
-author: "Blog Author"
-description: "My blog"
+title: "Blog of Daphne Ippolito and her students and friends"
+author: "Daphne Ippolito and others"
+description: "I've been wanting to start doing more informal writing about the things I'm currently thinking about or working on that don't fall nearly into 'CS Research.' Let's see how it goes!"
 permalink: /:title/
 lang: "en"
 excerpt_separator: "\n\n\n"
@@ -22,8 +22,8 @@ navigation:                     # accepts {file, title, url, icon, sidebaricon}
   - {file: "README.md", sidebaricon: address-card}
 
 external:                       # accepts {file, title, url, icon, sidebaricon}
-  - {title: Mail, icon: envelope, url: "mailto:author@example.com"}
-  - {title: Github, icon: github, url: "https://github.com/niklasbuschmann/contrast"}
+  - {title: Mail, icon: envelope, url: "mailto:daphnei@cmu.edu"}
+  - {title: Github, icon: github, url: "https://github.com/orgs/ippolito-cmu/"}
   - {title: Subscribe, icon: rss, url: "/feed.xml"}
 
 comments:

@@ -4,14 +4,18 @@ title: "Home"
 ---
 
 {% if site.show_excerpts %}
-  {% for post in site.posts %}
-    <article>
-      {% include meta.html post=post %}
-      {{ post.excerpt }}
-      <footer class="button"><a href="{{ post.url | relative_url }}">read more</a></footer>
-    </article>
-  {% endfor %}
+{% for post in site.posts %}
+<article>
+  {% include meta.html post=post %}
+  {{ post.excerpt }}
+  {% assign excerpt_size = post.excerpt | size %}
+  {% assign content_size = post.content | size %}
+  {% if content_size != excerpt_size %}
+  <footer class="button"><a href="{{ post.url | relative_url }}">read more</a></footer>
+  {% endif %}
+</article>
+{% endfor %}
 {% else %}
-  {% capture source %}{% include_relative archive.html title="Posts" %}{% endcapture %}
-  {{ source | split: "---" | last }}
+{% capture source %}{% include_relative archive.html title="Posts" %}{% endcapture %}
+{{ source | split: "---" | last }}
 {% endif %}
