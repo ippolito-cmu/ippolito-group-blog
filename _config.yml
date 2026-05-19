@@ -1,4 +1,4 @@
-title: "Blog of Daphne Ippolito and her students and friends"
+title: "Daphne Ippolito's blog"
 author: "Daphne Ippolito and others"
 description: "I've been wanting to start doing more informal writing about the things I'm currently thinking about or working on that don't fall nearly into 'CS Research.' Let's see how it goes!"
 permalink: /:title/
@@ -19,7 +19,7 @@ show_minimal: false             # remove all clutter
 
 navigation:                     # accepts {file, title, url, icon, sidebaricon}
   - {file: "archive.html", sidebaricon: home}
-  - {file: "README.md", sidebaricon: address-card}
+  - {title: "Personal Website", url: "https://www.daphnei.com/", sidebaricon: address-card}
 
 external:                       # accepts {file, title, url, icon, sidebaricon}
   - {title: Mail, icon: envelope, url: "mailto:daphnei@cmu.edu"}

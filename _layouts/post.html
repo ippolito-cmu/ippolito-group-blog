@@ -5,15 +5,22 @@ layout: default
 <article>
   {% include meta.html post=page %}
   {{ content }}
+  {% if page.authors %}
+  <p style="color: gray;">
+    ~
+    <br>
+    <em>written by {{ page.authors }}</em>
+  </p>
+  {% endif %}
   {% if site.comments.isso_domain or site.comments.disqus_shortname %}
-    <hr>
-    {% if site.comments.isso_domain %}<div id="isso-thread"></div>{% endif %}
-    {% if site.comments.disqus_shortname %}<div id="disqus_thread"></div>{% endif %}
-    <noscript>Please enable JavaScript to view comments.</noscript>
+  <hr>
+  {% if site.comments.isso_domain %}<div id="isso-thread"></div>{% endif %}
+  {% if site.comments.disqus_shortname %}<div id="disqus_thread"></div>{% endif %}
+  <noscript>Please enable JavaScript to view comments.</noscript>
   {% endif %}
 </article>
 
-{% unless site.show_minimal or site.footer  %}
+{% unless site.show_minimal or site.footer %}
 {% if page.next.url or page.previous.url %}
 <footer class="nowrap {% if site.show_frame %}dark{% else %}smooth{% endif %}">
   {% if page.next.url %}<a href="{{ page.next.url | relative_url }}">« {{ page.next.title }}</a> {% endif %}
