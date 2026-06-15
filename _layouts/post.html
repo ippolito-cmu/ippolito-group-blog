@@ -5,13 +5,6 @@ layout: default
 <article>
   {% include meta.html post=page %}
   {{ content }}
-  {% if page.authors %}
-  <p style="color: gray;">
-    ~
-    <br>
-    <em>written by {{ page.authors }}</em>
-  </p>
-  {% endif %}
   {% if site.comments.isso_domain or site.comments.disqus_shortname %}
   <hr>
   {% if site.comments.isso_domain %}<div id="isso-thread"></div>{% endif %}
