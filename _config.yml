@@ -3,7 +3,7 @@ author: "Daphne Ippolito and others"
 description: "I've been wanting to start doing more informal writing about the things I'm currently thinking about or working on that don't fall nearly into 'CS Research.' Let's see how it goes!"
 permalink: /:title/
 lang: "en"
-excerpt_separator: "\n\n\n"
+excerpt_separator: "\n\n"
 date_format: "%B %d, %Y"
 
 # Layout
