@@ -1,0 +1,137 @@
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<div style="margin-bottom: 15px; font-family: sans-serif;">
+  <label for="select-385a28ca">Select Example: </label>
+  <select id="select-385a28ca" onchange="updateContent_385a28ca(this.value)" style="padding: 5px;">
+    <option value="0">1️⃣ with Gemini 3.1 Flash Lite</option>
+    <option value="1">1️⃣ with Gemini 2.5 Flash Preview</option>
+    <option value="2">1️⃣ with Gemini 3.1 Pro Preview</option>
+    <option value="3">2️⃣ with Gemini 3.1 Flash Lite</option>
+    <option value="4">2️⃣ with Gemini 2.5 Flash Preview</option>
+    <option value="5">2️⃣ with Gemini 3.1 Pro Preview</option>
+    <option value="6">3️⃣ with Gemini 3.1 Flash Lite</option>
+    <option value="7">3️⃣ with Gemini 2.5 Flash Preview</option>
+    <option value="8">3️⃣ with Gemini 3.1 Pro Preview</option>
+  </select>
+</div>
+
+<table id="table-385a28ca"
+  style="width: 100%; border-collapse: collapse; background: #f9f9f9; border: 1px solid #ccc; table-layout: fixed;">
+  <tr>
+    <!-- Left Column: Image -->
+    <td id="left-col-385a28ca"
+      style="width: 50%; max-width: 50%; vertical-align: top; padding: 15px; border-right: 1px solid #ccc; position: relative;">
+      <div id="resizer-385a28ca"
+        style="position: absolute; right: -5px; top: 0; bottom: 0; width: 10px; cursor: col-resize; z-index: 10; background: transparent;">
+      </div>
+      <div style="border: 1px solid #ddd; border-radius: 4px; overflow: hidden; background: white;">
+        <img id="img-385a28ca" src="/assets/images/history/Simon_box00041_fld03211_bdl0001_doc0001_00000003.jpg"
+          style="width: 100%; display: block;" alt="Source image" />
+      </div>
+    </td>
+
+    <!-- Right Column: Transcription -->
+    <td id="right-col-385a28ca" style="width: 50%; max-width: 50%; vertical-align: top; padding: 15px;">
+      <div
+        style="display: flex; flex-direction: column; min-height: 400px; max-height: 80vh; min-width: 0; overflow: hidden;">
+        <div style="margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 5px;">
+          <button onclick="showRaw_385a28ca()" style="cursor: pointer; padding: 5px 10px;">Raw</button>
+          <button onclick="showRendered_385a28ca()" style="cursor: pointer; padding: 5px 10px;">Rendered</button>
+        </div>
+        <div id="content-container-385a28ca"
+          style="overflow: auto; background: white; padding: 10px; border: 1px solid #eee; font-family: monospace; white-space: pre-wrap; flex-grow: 1; word-break: break-word; min-width: 0;">
+          <div id="raw-385a28ca" style="display: block;"></div>
+          <div id="rendered-385a28ca" style="display: none; font-family: serif; white-space: normal;">
+            $$\int_{0}^{t}m\frac{dT}{dt}dt=-\int_{0}^{t}P\frac{dV}{dt}dt+\int_{0}^{t}PT_{0}dt-\int_{0}^{t}PTdt$$
+            m$$\frac{dT}{dt}=-P\frac{dV}{dt}+PT_{0}-PT$$ (1) $$m\frac{dT}{dt}+PT=-P\frac{dV}{dt}+PT_{0}$$ PVT, $$T_{0}$$
+            (2) $$PV=mT$$ $$P\frac{dV}{dt}+V\frac{dP}{dt}=m\frac{dT}{dt}$$ $$PVT_{0}$$ (3)
+            $$P\frac{dV}{dt}+V\frac{dP}{dt}+\frac{\rho}{m}PV=-P\frac{dV}{dt}+PT_{0}$$
+            $$2P\frac{dV}{dt}+V\frac{dP}{dt}+\frac{\rho}{m}PV=\rho T_{0}$$ $$m[T(1)-T(0)]+\rho
+            T(0)=-P(0)[V(1)-V(0)]+\rho T_{0}$$ $$P(0)V(0)=mT(0)$$ P(1) T(1) V(1) P(0) T(0) V(0) P T V X X X X X X X
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<script>
+  (function () {
+    const rawTexts = ["<math>\\int_{0}^{t}m\\frac{dT}{dt}dt=-\\int_{0}^{t}P\\frac{dV}{dt}dt+\\int_{0}^{t}PT_{0}dt-\\int_{0}^{t}PTdt</math> m<math>\\frac{dT}{dt}=-P\\frac{dV}{dt}+PT_{0}-PT</math> (1) <math>m\\frac{dT}{dt}+PT=-P\\frac{dV}{dt}+PT_{0}</math> PVT, <math>T_{0}</math> (2) <math>PV=mT</math> <math>P\\frac{dV}{dt}+V\\frac{dP}{dt}=m\\frac{dT}{dt}</math> <math>PVT_{0}</math> (3) <math>P\\frac{dV}{dt}+V\\frac{dP}{dt}+\\frac{\\rho}{m}PV=-P\\frac{dV}{dt}+PT_{0}</math> <math>2P\\frac{dV}{dt}+V\\frac{dP}{dt}+\\frac{\\rho}{m}PV=\\rho T_{0}</math> <math>m[T(1)-T(0)]+\\rho T(0)=-P(0)[V(1)-V(0)]+\\rho T_{0}</math> <math>P(0)V(0)=mT(0)</math> P(1) T(1) V(1) P(0) T(0) V(0) P T V X X X X X X X", "<math>\\int_{0}^{t} m \\frac{dT}{dt} dt = - \\int_{0}^{t} P \\frac{dV}{dt} dt + \\int_{0}^{t} \\rho T_{0} dt - \\int_{0}^{t} \\rho T dt</math>\n\n<math>m \\frac{dT}{dt} = - P \\frac{dV}{dt} + \\rho T_{0} - \\rho T</math>\n\n(1) <math>m \\frac{dT}{dt} + \\rho T = - P \\frac{dV}{dt} + \\rho T_{0}</math>\n\n(2) <math>PV = mT</math>\n<math>P \\frac{dV}{dt} + V \\frac{dP}{dt} = m \\frac{dT}{dt}</math>\n\n<math>\\} \\begin{matrix} PVT, T_{0} \\\\\\\\ PVT_{0} \\end{matrix}</math>\n\n______________________________________________________________________\n\n(3) <math>P \\frac{dV}{dt} + V \\frac{dP}{dt} + \\frac{\\rho}{m} PV = - P \\frac{dV}{dt} + \\rho T_{0}</math>\n\n<math>2P \\frac{dV}{dt} + V \\frac{dP}{dt} + \\frac{\\rho}{m} PV = \\rho T_{0}</math>\n\n______________________________________________________________________\n\n<math>m [T(1) - T(0)] + \\rho T(0) = - P(0) [V(1) - V(0)] + \\rho T_{0}</math>\n\n<math>P(0) V(0) = m T(0)</math>\n\n<math>\\underline{P(1) \\quad T(1) \\quad V(1) \\quad P(0) \\quad T(0) \\quad V(0)} \\quad P \\quad T \\quad V</math>\n\nX X X\n\n      X X X X X", "<math>\\int\\limits_0^t m\\frac{dT}{dt}dt = -\\int\\limits_0^t P \\frac{dV}{dt} dt + \\int\\limits_0^t \\rho T_0 dt - \\int\\limits_0^t \\rho T dt</math>\n\n<math>m \\frac{dT}{dt} = - P\\frac{dv}{dt} + \\rho T_0 - \\rho T</math>\n\n<math>(1) \\quad m \\frac{dT}{dt} + \\rho T = - P\\frac{dv}{dt} + \\rho T_0 \\quad \\bigg\\} \\quad PVT, T_0</math>\n<math>\\cancel{= \\rho P d + V \\frac{d\\rho}{dt}}</math>\n<math>(2) \\quad P V = m T</math>\n<math>P \\frac{dv}{dt} + V \\frac{dP}{dt} = m \\frac{dT}{dt}</math>\n<math>P V T_0</math>\n\n<math>(3) \\quad P \\frac{dV}{dt} + V \\frac{dP}{dt} + \\frac{\\rho}{m} P V = - P \\frac{dv}{dt} + \\rho T_0</math>\n<math>2 P \\frac{dv}{dt} + V \\frac{dP}{dt} + \\frac{\\rho}{m} P V = \\rho T_0</math>\n\n<math>m[T(1) - T(0)] + \\rho T(0) = -P(0)[v(1)-v(0)] + \\rho T_0</math>\n<math>P(0) \\ V(0) = m \\ T(0)</math>\n<math>\\begin{array}{cccccc}\nP(1) & T(1) & V(1) & P(0) & T(0) & V(0) \\\\\n\\hline\n\\times & \\times & \\times & & & \\\\\n& \\times & \\times & \\times & \\times & \\times\n\\end{array}</math> <math>\\quad \\quad P \\quad T \\quad V</math>", "Altruism and Docility I. Darwinian arguments in economics and social science A. Friedman and Hirshleifer on survival of business firms: what is the gene? - equilibrium and disequilibrium, local & global equilibrium (invasion by foreign species as evident to local equilibrium) B. Survival of the fittest Reproductive fitness and wealth, power II. Can social systems select for altruism? A. The contradictions of strong altruism Selective mechanisms: kinship, structured demes (pitchforks) D. S. Wilson B. The key: is altruism recognizable, hence rewardable 1. Weak altruism = enlightened self interest 2. conditions: social approval of altruistic behavior susceptibility to guilt and/or shame reward for altruism with opportunities for increased procreation * 3. Generalization: Docility as a basis for altruism: child dependence } * Note: \"Non-selective\" altruism: rewards orthogonal to reproductive fitness - maintenance of these also through docility.", "Altruism and Docility\n\nI. Darwinian arguments in economics and social science\n\nA. Friedman and Hirshleifer on survival of\nbusiness firms : what is the gene?\n- equilibrium and disequilibrium, local & global equilibrium\n(invasion by foreign species as\nend to local equilibrium)\nB. Survival of the fittest\nReproductive fitness and\nwealth, power\n\nII. Can social systems select for altruism?\n\nA. The contradictions of strong altruism\nSelective mechanisms: Kinship, structured demes\n(patchy habitats)\nD. S. Wilson\n\nB. The key: Is altruism recognizable, hence rewardable\n1. Weak altruism = enlightened self interest\n2. conditions: social approval of altruistic behavior\nsusceptibility to guilt and/or shame\nreward for altruism with opportunities\nfor increased procreation *\n3. Generalization:\nDocility as a basis for altruism : child\ndependence }\n* Note: \"Non-selective\" altruism: rewards orthogonal to\nreproductive fitness - maintenance of these also\nthrough docility.", "Altruism and Docility\n\nI. Darwinian arguments in economics and social science\n\nA. Friedman and Hirshleifer on survival of \n\nbusiness firms: what is the gene?\n\n-equilibrium and disequilibrium; local + global equilibrium \n\nB. Survival of the fittest\n\n(invasion by foreign species as \nevidence of local equilibrium)\n\nReproductive fitness and\n\nwealth, power\n\nII. Can social systems select for altruism?\n\nA. The contradictions of strong altruism\n\nselective mechanisms: kinship, structured demes \n\n(pitcherplants)\n\nD.S. Wilson\n\nB. The key: Is altruism recognizable, hence rewardable\n\n1. Weak altruism = enlightened self interest\n\n2. Conditions: social approval of altruistic behavior\n\nsusceptibility to guilt and/or shame\n\nreward for altruism with opportunities\n\nfor increased procreation *\n\n3. Generalization:                                                       child\nDocility as a basis for altruism: dependence }\n\n*Note: \"Non-selective\" altruism: rewards orthogonal to\nreproductive fitness - maintenance of these also\nthrough docility.", "April - Smithsonian - April 27\n- Gotheberg - August 5-7 - Information Storage as a Problem in Organized Design\n- (Santa Barbara) - May 13\n- Japan - November\n- Newspaper Editors - April 18\n\nComplexity & Hierarchy\nWhy complex systems have subsystems.\n1321\n342\n374\n748\n561\n63954\n\n<diagram>A flow diagram showing a process starting with a boxed 6, which leads to 9 via a 'multiplier (+1 carry)' step, and then proceeds to 12, 15, 9, and finally a boxed 5.</diagram>\n\n<diagram>A tree-like diagram showing a top node branching down to 6, 9, and 5, with horizontal lines below indicating a multiplication and addition sequence resulting in 3, 6, 9, and 5.</diagram>\n\nor: 6 -> 9 | 6 -> 9 | 6 -> 9\n--------------------------\n3 -> 6 -> 9 -> 5 (Mult. / Add.)\n\nor rigid body - 6 degrees of freedom\nor planetary electrons and valence\n\nRedundancy in complex structures.\n\nMeasure of complexity in a connected graph - number of connections.", "April-Smithsonian-April 27\n-Gotheberg-August 5-7- Information Storage as a Problem in Organizational Design\n-(Santa Barbara)-May 13\n-Japan-November\n-Newspaper Editors-April 18\n\nComplexity & Hierarchy\nWhy complex systems have subsystems.\n\n<math>\\begin{array}{r} ^{3}\\space^{2}\\space^{1} \\\\ 187 \\\\ \\times 342 \\\\ \\hline 374 \\\\ 748 \\\\ 561 \\\\ \\hline 63954 \\end{array}</math>\n\n<diagram>A diagram illustrating the process of breaking down a complex calculation into smaller operations. It shows a starting value '6' in a box labeled 'statement w.m.', with an arrow pointing to '9' labeled 'multiplic.' with a '+1 carry' notation. A sequence of arrows follows: '9 -> 12 -> 15 -> 9 -> [5]'. There is a tree diagram showing a main node branching into three nodes labeled '6', '9', and '5'. Below this, two horizontal flows represent the sub-tasks: '6 -> 9 | 6 -> 9 | 6 -> 9' labeled 'mult.' and '3 -> 6 -> 9 -> 5' labeled 'add.'</diagram>\n\nor rigid body - 6 degrees of freedom\nor or planetary electrons and valence\n\nRedundancy in complex structures.\nMeasure of complexity in a connected graph - number of connections.", "April - Smithsonian - April 27\n- Gothelberg - August 5-7- Information Storage as a Problem in Organizational Design\n- (Santa Barbara) - May 13\n- Japan - November\n- Newspaper Editors - April 18\n\nComplexity & Hierarchy\nWhy complex systems have subsystems.\n\n3 2 1\n1 8 7   statement\nw.m.\n3 4 2\n[6] multiplie\naddition\n(+ 1 carry) [\n3 7 4\n9\n7 4 8\n12\n5 ' 6 1 '\n15 -> 9 -> [5]\n6 3 9 5 4\n\n15\n(6)\n(9)  (5)\n\nor : <math>\\frac{6 \\rightarrow 9|6 \\rightarrow 9|6 \\rightarrow 9|}{3 \\rightarrow 6 \\rightarrow 9 \\longrightarrow 5}</math> mult.\nadd.\n\nor rigid body - 6 degrees of freedom\nor or planetary elections and valence\n\nRedundancy in complex structures.\n\nMeasure of complexity in a connected graph -\nnumber of connections."];
+    const renderedTexts = ["$$\\int_{0}^{t}m\\frac{dT}{dt}dt=-\\int_{0}^{t}P\\frac{dV}{dt}dt+\\int_{0}^{t}PT_{0}dt-\\int_{0}^{t}PTdt$$ m$$\\frac{dT}{dt}=-P\\frac{dV}{dt}+PT_{0}-PT$$ (1) $$m\\frac{dT}{dt}+PT=-P\\frac{dV}{dt}+PT_{0}$$ PVT, $$T_{0}$$ (2) $$PV=mT$$ $$P\\frac{dV}{dt}+V\\frac{dP}{dt}=m\\frac{dT}{dt}$$ $$PVT_{0}$$ (3) $$P\\frac{dV}{dt}+V\\frac{dP}{dt}+\\frac{\\rho}{m}PV=-P\\frac{dV}{dt}+PT_{0}$$ $$2P\\frac{dV}{dt}+V\\frac{dP}{dt}+\\frac{\\rho}{m}PV=\\rho T_{0}$$ $$m[T(1)-T(0)]+\\rho T(0)=-P(0)[V(1)-V(0)]+\\rho T_{0}$$ $$P(0)V(0)=mT(0)$$ P(1) T(1) V(1) P(0) T(0) V(0) P T V X X X X X X X", "$$\\int_{0}^{t} m \\frac{dT}{dt} dt = - \\int_{0}^{t} P \\frac{dV}{dt} dt + \\int_{0}^{t} \\rho T_{0} dt - \\int_{0}^{t} \\rho T dt$$\n\n$$m \\frac{dT}{dt} = - P \\frac{dV}{dt} + \\rho T_{0} - \\rho T$$\n\n(1) $$m \\frac{dT}{dt} + \\rho T = - P \\frac{dV}{dt} + \\rho T_{0}$$\n\n(2) $$PV = mT$$\n$$P \\frac{dV}{dt} + V \\frac{dP}{dt} = m \\frac{dT}{dt}$$\n\n$$\\} \\begin{matrix} PVT, T_{0} \\\\\\\\ PVT_{0} \\end{matrix}$$\n\n______________________________________________________________________\n\n(3) $$P \\frac{dV}{dt} + V \\frac{dP}{dt} + \\frac{\\rho}{m} PV = - P \\frac{dV}{dt} + \\rho T_{0}$$\n\n$$2P \\frac{dV}{dt} + V \\frac{dP}{dt} + \\frac{\\rho}{m} PV = \\rho T_{0}$$\n\n______________________________________________________________________\n\n$$m [T(1) - T(0)] + \\rho T(0) = - P(0) [V(1) - V(0)] + \\rho T_{0}$$\n\n$$P(0) V(0) = m T(0)$$\n\n$$\\underline{P(1) \\quad T(1) \\quad V(1) \\quad P(0) \\quad T(0) \\quad V(0)} \\quad P \\quad T \\quad V$$\n\nX X X\n\n      X X X X X", "$$\\int\\limits_0^t m\\frac{dT}{dt}dt = -\\int\\limits_0^t P \\frac{dV}{dt} dt + \\int\\limits_0^t \\rho T_0 dt - \\int\\limits_0^t \\rho T dt$$\n\n$$m \\frac{dT}{dt} = - P\\frac{dv}{dt} + \\rho T_0 - \\rho T$$\n\n$$(1) \\quad m \\frac{dT}{dt} + \\rho T = - P\\frac{dv}{dt} + \\rho T_0 \\quad \\bigg\\} \\quad PVT, T_0$$\n$$\\cancel{= \\rho P d + V \\frac{d\\rho}{dt}}$$\n$$(2) \\quad P V = m T$$\n$$P \\frac{dv}{dt} + V \\frac{dP}{dt} = m \\frac{dT}{dt}$$\n$$P V T_0$$\n\n$$(3) \\quad P \\frac{dV}{dt} + V \\frac{dP}{dt} + \\frac{\\rho}{m} P V = - P \\frac{dv}{dt} + \\rho T_0$$\n$$2 P \\frac{dv}{dt} + V \\frac{dP}{dt} + \\frac{\\rho}{m} P V = \\rho T_0$$\n\n$$m[T(1) - T(0)] + \\rho T(0) = -P(0)[v(1)-v(0)] + \\rho T_0$$\n$$P(0) \\ V(0) = m \\ T(0)$$\n$$\\begin{array}{cccccc}\nP(1) & T(1) & V(1) & P(0) & T(0) & V(0) \\\\\n\\hline\n\\times & \\times & \\times & & & \\\\\n& \\times & \\times & \\times & \\times & \\times\n\\end{array}$$ $$\\quad \\quad P \\quad T \\quad V$$", "Altruism and Docility I. Darwinian arguments in economics and social science A. Friedman and Hirshleifer on survival of business firms: what is the gene? - equilibrium and disequilibrium, local & global equilibrium (invasion by foreign species as evident to local equilibrium) B. Survival of the fittest Reproductive fitness and wealth, power II. Can social systems select for altruism? A. The contradictions of strong altruism Selective mechanisms: kinship, structured demes (pitchforks) D. S. Wilson B. The key: is altruism recognizable, hence rewardable 1. Weak altruism = enlightened self interest 2. conditions: social approval of altruistic behavior susceptibility to guilt and/or shame reward for altruism with opportunities for increased procreation * 3. Generalization: Docility as a basis for altruism: child dependence } * Note: \"Non-selective\" altruism: rewards orthogonal to reproductive fitness - maintenance of these also through docility.", "Altruism and Docility\n\nI. Darwinian arguments in economics and social science\n\nA. Friedman and Hirshleifer on survival of\nbusiness firms : what is the gene?\n- equilibrium and disequilibrium, local & global equilibrium\n(invasion by foreign species as\nend to local equilibrium)\nB. Survival of the fittest\nReproductive fitness and\nwealth, power\n\nII. Can social systems select for altruism?\n\nA. The contradictions of strong altruism\nSelective mechanisms: Kinship, structured demes\n(patchy habitats)\nD. S. Wilson\n\nB. The key: Is altruism recognizable, hence rewardable\n1. Weak altruism = enlightened self interest\n2. conditions: social approval of altruistic behavior\nsusceptibility to guilt and/or shame\nreward for altruism with opportunities\nfor increased procreation *\n3. Generalization:\nDocility as a basis for altruism : child\ndependence }\n* Note: \"Non-selective\" altruism: rewards orthogonal to\nreproductive fitness - maintenance of these also\nthrough docility.", "Altruism and Docility\n\nI. Darwinian arguments in economics and social science\n\nA. Friedman and Hirshleifer on survival of \n\nbusiness firms: what is the gene?\n\n-equilibrium and disequilibrium; local + global equilibrium \n\nB. Survival of the fittest\n\n(invasion by foreign species as \nevidence of local equilibrium)\n\nReproductive fitness and\n\nwealth, power\n\nII. Can social systems select for altruism?\n\nA. The contradictions of strong altruism\n\nselective mechanisms: kinship, structured demes \n\n(pitcherplants)\n\nD.S. Wilson\n\nB. The key: Is altruism recognizable, hence rewardable\n\n1. Weak altruism = enlightened self interest\n\n2. Conditions: social approval of altruistic behavior\n\nsusceptibility to guilt and/or shame\n\nreward for altruism with opportunities\n\nfor increased procreation *\n\n3. Generalization:                                                       child\nDocility as a basis for altruism: dependence }\n\n*Note: \"Non-selective\" altruism: rewards orthogonal to\nreproductive fitness - maintenance of these also\nthrough docility.", "April - Smithsonian - April 27\n- Gotheberg - August 5-7 - Information Storage as a Problem in Organized Design\n- (Santa Barbara) - May 13\n- Japan - November\n- Newspaper Editors - April 18\n\nComplexity & Hierarchy\nWhy complex systems have subsystems.\n1321\n342\n374\n748\n561\n63954\n\n\n> A flow diagram showing a process starting with a boxed 6, which leads to 9 via a 'multiplier (+1 carry)' step, and then proceeds to 12, 15, 9, and finally a boxed 5.\n\n\n> A tree-like diagram showing a top node branching down to 6, 9, and 5, with horizontal lines below indicating a multiplication and addition sequence resulting in 3, 6, 9, and 5.\n\nor: 6 -> 9 | 6 -> 9 | 6 -> 9\n--------------------------\n3 -> 6 -> 9 -> 5 (Mult. / Add.)\n\nor rigid body - 6 degrees of freedom\nor planetary electrons and valence\n\nRedundancy in complex structures.\n\nMeasure of complexity in a connected graph - number of connections.", "April-Smithsonian-April 27\n-Gotheberg-August 5-7- Information Storage as a Problem in Organizational Design\n-(Santa Barbara)-May 13\n-Japan-November\n-Newspaper Editors-April 18\n\nComplexity & Hierarchy\nWhy complex systems have subsystems.\n\n$$\\begin{array}{r} ^{3}\\space^{2}\\space^{1} \\\\ 187 \\\\ \\times 342 \\\\ \\hline 374 \\\\ 748 \\\\ 561 \\\\ \\hline 63954 \\end{array}$$\n\n\n> A diagram illustrating the process of breaking down a complex calculation into smaller operations. It shows a starting value '6' in a box labeled 'statement w.m.', with an arrow pointing to '9' labeled 'multiplic.' with a '+1 carry' notation. A sequence of arrows follows: '9 -> 12 -> 15 -> 9 -> [5]'. There is a tree diagram showing a main node branching into three nodes labeled '6', '9', and '5'. Below this, two horizontal flows represent the sub-tasks: '6 -> 9 | 6 -> 9 | 6 -> 9' labeled 'mult.' and '3 -> 6 -> 9 -> 5' labeled 'add.'\n\nor rigid body - 6 degrees of freedom\nor or planetary electrons and valence\n\nRedundancy in complex structures.\nMeasure of complexity in a connected graph - number of connections.", "April - Smithsonian - April 27\n- Gothelberg - August 5-7- Information Storage as a Problem in Organizational Design\n- (Santa Barbara) - May 13\n- Japan - November\n- Newspaper Editors - April 18\n\nComplexity & Hierarchy\nWhy complex systems have subsystems.\n\n3 2 1\n1 8 7   statement\nw.m.\n3 4 2\n[6] multiplie\naddition\n(+ 1 carry) [\n3 7 4\n9\n7 4 8\n12\n5 ' 6 1 '\n15 -> 9 -> [5]\n6 3 9 5 4\n\n15\n(6)\n(9)  (5)\n\nor : $$\\frac{6 \\rightarrow 9|6 \\rightarrow 9|6 \\rightarrow 9|}{3 \\rightarrow 6 \\rightarrow 9 \\longrightarrow 5}$$ mult.\nadd.\n\nor rigid body - 6 degrees of freedom\nor or planetary elections and valence\n\nRedundancy in complex structures.\n\nMeasure of complexity in a connected graph -\nnumber of connections."];
+    const imagePaths = ["/assets/images/history/Simon_box00041_fld03211_bdl0001_doc0001_00000003.jpg", "/assets/images/history/Simon_box00041_fld03211_bdl0001_doc0001_00000003.jpg", "/assets/images/history/Simon_box00041_fld03211_bdl0001_doc0001_00000003.jpg", "/assets/images/history/Simon_box00058_fld04426_bdl0001_doc0001_00000001.jpg", "/assets/images/history/Simon_box00058_fld04426_bdl0001_doc0001_00000001.jpg", "/assets/images/history/Simon_box00058_fld04426_bdl0001_doc0001_00000001.jpg", "/assets/images/history/Simon_box00061_fld04616_bdl0001_doc0001_00000002.jpg", "/assets/images/history/Simon_box00061_fld04616_bdl0001_doc0001_00000002.jpg", "/assets/images/history/Simon_box00061_fld04616_bdl0001_doc0001_00000002.jpg"];
+    let currentIdx = 0;
+    let viewMode = 'raw'; // 'raw' or 'rendered'
+
+    window.updateContent_385a28ca = function (idx) {
+      currentIdx = parseInt(idx);
+      document.getElementById('img-385a28ca').src = imagePaths[currentIdx];
+      document.getElementById('rendered-385a28ca').innerHTML = renderedTexts[currentIdx];
+
+      if (viewMode === 'raw') {
+        showRaw_385a28ca();
+      } else {
+        showRendered_385a28ca();
+      }
+    };
+
+    window.showRaw_385a28ca = function () {
+      viewMode = 'raw';
+      const rawDiv = document.getElementById('raw-385a28ca');
+      rawDiv.textContent = rawTexts[currentIdx];
+      rawDiv.style.display = 'block';
+      document.getElementById('rendered-385a28ca').style.display = 'none';
+      const container = document.getElementById('content-container-385a28ca');
+      container.style.fontFamily = 'monospace';
+      container.style.whiteSpace = 'pre-wrap';
+    };
+
+    window.showRendered_385a28ca = function () {
+      viewMode = 'rendered';
+      document.getElementById('raw-385a28ca').style.display = 'none';
+      const renderedDiv = document.getElementById('rendered-385a28ca');
+      renderedDiv.style.display = 'block';
+      const container = document.getElementById('content-container-385a28ca');
+      container.style.fontFamily = 'serif';
+      container.style.whiteSpace = 'normal';
+      if (window.MathJax) {
+        MathJax.typesetPromise([renderedDiv]);
+      }
+    };
+
+    // Initialize first view
+    showRaw_385a28ca();
+
+    // Resizer logic
+    const resizer = document.getElementById('resizer-385a28ca');
+    const leftCol = document.getElementById('left-col-385a28ca');
+    const rightCol = document.getElementById('right-col-385a28ca');
+    const table = document.getElementById('table-385a28ca');
+    let isResizing = false;
+
+    resizer.addEventListener('mousedown', function (e) {
+      isResizing = true;
+      document.body.style.cursor = 'col-resize';
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', function (e) {
+      if (!isResizing) return;
+      const tableRect = table.getBoundingClientRect();
+      let newWidthPercent = ((e.clientX - tableRect.left) / tableRect.width) * 100;
+      if (newWidthPercent < 10) newWidthPercent = 10;
+      if (newWidthPercent > 90) newWidthPercent = 90;
+
+      leftCol.style.width = newWidthPercent + '%';
+      leftCol.style.maxWidth = newWidthPercent + '%';
+      rightCol.style.width = (100 - newWidthPercent) + '%';
+      rightCol.style.maxWidth = (100 - newWidthPercent) + '%';
+    });
+
+    document.addEventListener('mouseup', function (e) {
+      if (isResizing) {
+        isResizing = false;
+        document.body.style.cursor = 'default';
+      }
+    });
+  })();
+</script>
