@@ -34,7 +34,7 @@ I’ve found that students who have exposure to how people think and work outsid
 While there are many PhD students who write highly impactful dissertations on making AI work better for AI researchers/practitioners, I am much more excited about making AI work better for people outside the field.
 This requires the patience and openmindedness to learn not just the jargon and core concepts of these other fields, but how people in these fields think and what they value.
 
-Lately, it seems like an increasing number of “AI people” subscribe to the notion that once we build AI that solves building AI (what some call [recursive self-improvement](https://www.anthropic.com/institute/recursive-self-improvement)), all other traditionally human forms of inquiry and creativity will be made irrelevant as superhuman AI adopt to perform all these acts for us.
+Lately, it seems like an increasing number of “AI people” subscribe to the notion that once we build AI that solves building AI (what some call [recursive self-improvement](https://www.anthropic.com/institute/recursive-self-improvement)), all other traditionally human forms of inquiry and creativity will be made irrelevant as superhuman AI adapt to perform all these acts for us.
 I’ve found that the more exposure students have had to disciplines far adrift from AI and CS, especially ones where “goodness” cannot be quantified or verified, the less likely they are to hold this viewpoint.
 Personally, I am more keen to find ways to make AI a useful tool for humans rather than a replacement for them, and I hope to recruit students who hold a similar sentiment.
 
